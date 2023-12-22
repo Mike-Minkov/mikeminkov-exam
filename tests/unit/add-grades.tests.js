@@ -3,13 +3,13 @@ const fetch = require('node-fetch');
 
 suite('Add Grades page', function() {
   test('Page title', async function() {
-    let res = await fetch("http://localhost:8888/Add-Grade");
+    let res = await fetch("http://localhost:8080/Add-Grade");
     let body = await res.text();
     assert.ok(body.includes("<h1>Add New Grade</h1>"));
   });
 
   test('Grade HTML form', async function() {
-    let res = await fetch("http://localhost:8888/Add-Grade");
+    let res = await fetch("http://localhost:8080/Add-Grade");
     let body = await res.text();
     
     let subjectFieldFound = body.includes('<input id="subject" type="text" name="subject"/>');
@@ -24,7 +24,7 @@ suite('Add Grades page', function() {
 
   test('Add valid grade', async function() {
     let res = await fetch(
-      "http://localhost:8888/Add-Grade",
+      "http://localhost:8080/Add-Grade",
       {
         method: 'POST',
         headers: {
@@ -41,7 +41,7 @@ suite('Add Grades page', function() {
 
   test('Add invalid grade', async function() {
      let res = await fetch(
-      "http://localhost:8888/Add-Grade",
+      "http://localhost:8080/Add-Grade",
       {
         method: 'POST',
         headers: {
